@@ -1,12 +1,12 @@
 .SUFFIXES: .d
-.PHONY: test
+.PHONY: lib test sample
 
-all: sample_list test
+all: lib
 .d.o:
 	dmd -c $^
-unittests: expression.d scanner.d parser.d
-	dmd -unittest unittests.d $^
-sample_list: sample_list.d expression.o scanner.o parser.o
-	dmd $^
-test: unittests
-	./unittests
+lib:
+	make -C dsshiki
+sample:
+	make -C sample
+test:
+	make -C test

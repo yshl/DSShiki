@@ -1,3 +1,2 @@
-unittests
-sample_list
 *.o
+*.a
