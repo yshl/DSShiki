@@ -1,8 +1,10 @@
 OBJ=expression.o scanner.o parser.o
-.SUFFIXES: .d
-.PHONY:
+LIBS=libdsshiki.a
 
-all: libdsshiki.a
+.SUFFIXES: .d
+.PHONY: clean
+
+all: $(LIBS)
 .d.o:
 	dmd -c $^
 expression.o: expression.d
@@ -11,3 +13,6 @@ parser.o: parser.d
 
 libdsshiki.a: $(OBJ)
 	dmd -fPIC -of$@ -lib $^
+
+clean:
+	rm -f $(OBJ) $(LIBS)
