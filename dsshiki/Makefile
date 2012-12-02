@@ -7,9 +7,6 @@ LIBS=libdsshiki.a
 all: $(LIBS)
 .d.o:
 	dmd -c $^
-expression.o: expression.d
-scanner.o: scanner.d
-parser.o: parser.d
 
 libdsshiki.a: $(OBJ)
 	dmd -fPIC -of$@ -lib $^
