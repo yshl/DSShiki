@@ -1,12 +1,12 @@
-LIB=../dsshiki/dsshiki.a
+DFLAGS=-I../dsshiki
+LDFLAGS=-L-L../dsshiki -L-ldsshiki
 
 .SUFFIXES: .d
 
 all: sample_list
 .d.o:
-	dmd -c $^
+	dmd -c $^ $(DFLAGS)
 
-$(LIB):
+sample_list: sample_list.o
 	make -C .. lib
-sample_list: sample_list.o $(LIB)
-	dmd $^ $(LIB)
+	dmd $^ $(DFLAGS) $(LDFLAGS)

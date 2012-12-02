@@ -8,6 +8,6 @@ all: test
 .d.o:
 	dmd -c $^
 unittests: unittests.d $(SRC)
-	dmd -unittest unittests.d $^
+	dmd -unittest $^
 test: unittests
 	./unittests
